@@ -76,7 +76,7 @@ def user_clean_data(user, upper_limit, lower_limit):
     #this check that the number is not a integer and is between not between lower_limit and upper_limit if that is True it goes into the loop and keep going until the user inputs a valid input
     while not (user_input.isnumeric() and lower_limit <= int(user_input) <= upper_limit):
         #prints: Input Invalid in red
-        print("\x1b[1m\x1b[31mInput Invalid\x1b[30m\x1b[0m")
+        print("\x1b[1m\x1b[31mInput Invalid\x1b[0m\x1b[0m")
         #this is for the game itself picking the row
         if upper_limit == 7:
             user_input = input(user + " Player input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
@@ -118,10 +118,10 @@ def front_end_board():
 front_board = front_end_board()
 
 
-# flips the board as the numpy arrays consider the top left to be (0,0) but the it is easyer to work with the the bottom left being (0,0)
+# flips the board as the numpy arrays consider the top left to be (0,0) but the it is easier to work with the the bottom left being (0,0)
 def flip_board(board):
-    fliped_board = (np.flip(board , 0))
-    return fliped_board
+    flipped_board = (np.flip(board , 0))
+    return flipped_board
 board_right_way = flip_board(board) 
 
 
@@ -133,11 +133,11 @@ def draw(board):
     return True
 
 
-#checks for 2 in a row in the numpy array and and trys to make it 3 in a row
+#checks for 2 in a row in the numpy array and and tries to make it 3 in a row
 def three_in_a_row(board, chip):
     #defines board_right_way
     board_right_way = flip_board(board)
-    #sets the defalt value back to be (-1 , -1)
+    #sets the default value back to be (-1 , -1)
     back = (-1 , -1)
     #iterates through a initial box of values in the array
 #checks for 2 in a row vertically and looks for 3 in a row
@@ -317,11 +317,11 @@ def three_in_a_row(board, chip):
     return back
 
 
-#checks for 3 in a row in the numpy array and and trys to make it 4 in a row
+#checks for 3 in a row in the numpy array and and tries to make it 4 in a row
 def four_in_a_row(board, chip):
     #defines board_right_way
     board_right_way = flip_board(board)
-    #sets the defalt value back to be (-1 , -1)
+    #sets the default value back to be (-1 , -1)
     back = (-1 , -1)
 #checks for 3 in a row vertically and looks for 4 in a row    
     #iterates through a initial box of values in the array
@@ -445,7 +445,7 @@ def four_in_a_row(board, chip):
                         add_num += 1
                         #checks for 3 in a row positively diagonal each x and y value given from above in the middle
                         if board[y][x] == chip and board[y+add_num][x+add_num] == chip and board[y+3][x+3] == chip:    
-                            #if the filled in space is one the counter should go in the other, and acumpeing other axis
+                            #If the filled-in space is one, the counter should go in the other, and occupying the other axis.
                             if add_num == 1:
                                 middle_x = x+2
                                 middle_y = 5-(y+2)
@@ -470,7 +470,7 @@ def four_in_a_row(board, chip):
             for x in range(5):
                 #checks for 3 in a row in a negative diagonal from each x and y value given from above
                 if board[y][x] == chip and board[y-1][x+1] == chip and board[y-2][x+2] == chip:
-                    #if the filled in space is one the counter should go in the other, and acumpeing other axis
+                    #If the filled-in space is one, the counter should go in the other, and occupying the other axis."
                     large_y = 5-(y-3)
                     large_x = x+3
                     small_y = 5-(y+1)
@@ -498,7 +498,7 @@ def four_in_a_row(board, chip):
                         add_num += 1
                         #checks for 3 in a row negative diagonal each x and y value given from above in the middle
                         if board[y][x] == chip and board[y-add_num][x+add_num] == chip and board[y-3][x+3] == chip:    
-                            #if the filled in space is one the counter should go in the other, and acumpeing other axis
+                            #If the filled-in space is one, the counter should go in the other, and occupying the other axis."
                             if add_num == 1:
                                 middle_x = x+2
                                 middle_y = 5-(y-2)
@@ -519,7 +519,7 @@ def four_in_a_row(board, chip):
 #looks for wins
 def win(board, chip):
 #looks for vertical wins
-    win_chip = "\x1b[32m●\x1b[30m"
+    win_chip = "\x1b[32m●\x1b[0m"
     #iterates through a initial box of values in the array
     for x in range(7):
         for y in range(3):
@@ -577,9 +577,9 @@ def front_end():
             if board_right_way[x][y] == 0:
                 front_board[x][y] = " "
             elif board_right_way[x][y] == 1:
-                front_board[x][y] = "\x1b[33m\x1b[1m●\x1b[30m\x1b[22m"
+                front_board[x][y] = "\x1b[33m\x1b[1m●\x1b[0m\x1b[22m"
             elif board_right_way[x][y] == 2:
-                front_board[x][y] = "\x1b[31m●\x1b[30m"
+                front_board[x][y] = "\x1b[31m●\x1b[0m"
 
     #if all_zero = False
     win(board_right_way,chip)        
@@ -603,9 +603,9 @@ def front_end():
 
 #take in human moves and checks if they are possible
 def human_moves(user, chip, turn):
-    #initialises valid_input as False
+    #initialize valid_input as False
     valid_input = False
-    #loops untill a valid_input is given
+    #loops until a valid_input is given
     while valid_input == False:
         #gets a choice from the user
         column = user_clean_data(user, 7, 1)
@@ -621,19 +621,19 @@ def human_moves(user, chip, turn):
             front_end()
             #check if this results in a win or draw
             win_draw = check_win_draw(show)
-            #defines some valuse
+            #defines some values
             Game_in_progress = win_draw[0]
             game_outcome = win_draw[1]
             turn+=1
             valid_input = True
-            #find good option in a the functio possible_good_options
+            #find good option in using the function possible_good_options
             four_good_options = possible_good_options(chip)
             four_move_def = four_good_options[0]
             three_move_def  = four_good_options[1]
             four_move  = four_good_options[2]
             three_move = four_good_options[3]
             
-            #desides if the move is a attack, defense or neutral move
+            #decides if the move is a attack, defense or neutral move
             if four_move_def[1] == column or three_move_def[1] == column:
                 attack_defense_neutral = 1
             elif four_move[1] == column or three_move[1] == column:
@@ -644,7 +644,7 @@ def human_moves(user, chip, turn):
         
         else:
             # if the column is filled print this in red and check if there is a win or draw
-            print("\x1b[1m\x1b[31mThis column is filled try another column\x1b[30m\x1b[0m")
+            print("\x1b[1m\x1b[31mThis column is filled try another column\x1b[0m\x1b[0m")
             win_draw = check_win_draw(show)
             Game_in_progress = win_draw[0]
             game_outcome = win_draw[1]
@@ -670,29 +670,29 @@ def possible_good_options(chip):
     return(four_move_def,three_move_def,four_move,three_move)
 
 
-#the computers randomised good moves
-def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Defalt_probability):
-    #gets the 4 good desision
+#the computers randomized good moves
+def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Default_probability):
+    #gets the 4 good decisions
     four_good_options = possible_good_options(chip)
     four_move_def = four_good_options[0]
     three_move_def  = four_good_options[1]
     four_move  = four_good_options[2]
     three_move = four_good_options[3]
     #the first for normal games and second for Testing hypotheses and changing parameters option 4
-    if Defalt_probability:
+    if Default_probability:
         probability_list = [900,950,970,990]
     else:
         probability_list = [500,600,700,800]
     #random number for picking a move type
     probability_of_outcome = ra.randint(0,1000)
-    #initialises attack_defense_neutral and got_output
+    #initializes attack_defense_neutral and got_output
     attack_defense_neutral = 0
     got_output = False
     
     #does a three in a row attack
     #checks if a output has already being got
     if got_output == False:
-        #uses the random number to deside to do this or not
+        #uses the random number to decide to do this or not
         if probability_of_outcome < probability_list[0]:
             #checks of four_move has a valid output
             if four_move[1] >= 0:
@@ -718,7 +718,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
                             if turn == max_turn:
                                 game_outcome = 0
                                 Game_in_progress = False
-                        #make got_output = True so that it will not be replayed furder down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
+                        #make got_output = True so that it will not be replayed further down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
                         got_output = True
                         attack_defense_neutral = 3
                         turn+=1
@@ -726,7 +726,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
     #does a three in a row defense
     #checks if a output has already being got            
     if got_output == False:
-        #uses the random number to deside to do this or not
+        #uses the random number to decide to do this or not
         if probability_of_outcome < probability_list[1]:
             #checks of four_move_def has a valid output
             if four_move_def[1] >= 0:
@@ -752,7 +752,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
                             if turn == max_turn:
                                 game_outcome = 0
                                 Game_in_progress = False
-                        #make got_output = True so that it will not be replayed furder down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
+                        #make got_output = True so that it will not be replayed further down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
                         got_output = True
                         attack_defense_neutral = 1
                         turn+=1
@@ -760,7 +760,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
     #does a two in a row defense
     #checks if a output has already being got
     if got_output == False:
-        #uses the random number to deside to do this or not
+        #uses the random number to decide to do this or not
         if probability_of_outcome < probability_list[2]:
             #checks of three_move_def has a valid output
             if three_move_def[1] >= 0:
@@ -786,7 +786,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
                             if turn == max_turn:
                                 game_outcome = 0
                                 Game_in_progress = False
-                        #make got_output = True so that it will not be replayed furder down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
+                        #make got_output = True so that it will not be replayed further down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
                         got_output = True
                         attack_defense_neutral = 1
                         turn+=1
@@ -794,7 +794,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
     #does a two in a row attack
     #checks if a output has already being got
     if got_output == False:
-        #uses the random number to deside to do this or not
+        #uses the random number to decide to do this or not
         if probability_of_outcome < probability_list[3]:
             #checks of three_move has a valid output
             if three_move[1] >= 0:
@@ -820,14 +820,14 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
                             if turn == max_turn:
                                 game_outcome = 0
                                 Game_in_progress = False
-                        #make got_output = True so that it will not be replayed furder down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
+                        #make got_output = True so that it will not be replayed further down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
                         got_output = True
                         attack_defense_neutral = 3
                         turn+=1
 
     #checks if a output has already being got
     if got_output == False:            
-        #initialises pick_again
+        #initializes pick_again
         pick_again = True
         #a loop to insure a eventual output
         while pick_again:
@@ -853,7 +853,7 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
                         if turn == max_turn:
                             game_outcome = 0
                             Game_in_progress = False
-                    #make got_output = True so that it will not be replayed furder down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
+                    #make got_output = True so that it will not be replayed further down make attack_defense_neutral = 3 meaning attack add 1 to turn as one turn is complete
                     got_output = True
                     attack_defense_neutral = 2
                     turn+=1
@@ -864,17 +864,17 @@ def random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Def
 
 #checks for wins or draw outputs the chip winner if there is one changes Game_in_progress
 def check_win_draw(show):
-    #initialises valuse
+    #initialized values
     game_end = -1
     Game_in_progress = True
-    #if its a draw make Game_in_progress = False finishing the game and game_end = 0 repersenting a draw
+    #if its a draw make Game_in_progress = False finishing the game and game_end = 0 representing a draw
     if draw(board_right_way):
         Game_in_progress = False
         game_end = 0
         #show is true print Draw
         if show:
             print("Draw")
-    #if its a win make Game_in_progress = False finishing the game and the chip repersenting the winner
+    #if its a win make Game_in_progress = False finishing the game and the chip representing the winner
     elif win(board_right_way,chip) == False:
         Game_in_progress = False
         game_end = chip
@@ -925,7 +925,7 @@ def play_again(game_type):
     #while the inputs are not n or y stays in the loop
     while lower != "n" and lower != "y":
         #prints Input Invalid in red
-        print("\x1b[1m\x1b[31mInput Invalid\x1b[30m\x1b[0m")
+        print("\x1b[1m\x1b[31mInput Invalid\x1b[0m\x1b[0m")
         #takes a user input then makes it lower case again
         replay_input = input("Replay? Input y or n: ")
         lower = replay_input.lower()
@@ -945,13 +945,13 @@ def selection(csv_row_num,first_run):
         print()
     #prints a red number and the then a option
     print("Pick one of the following using the numbers adjacent:")
-    print("\x1b[1m\x1b[31m1\x1b[30m\x1b[0m = Simulation")
-    print("\x1b[1m\x1b[31m2\x1b[30m\x1b[0m = Single player")
-    print("\x1b[1m\x1b[31m3\x1b[30m\x1b[0m = Multiplayer")
-    print("\x1b[1m\x1b[31m4\x1b[30m\x1b[0m = Testing hypotheses and changing parameters")
+    print("\x1b[1m\x1b[31m1\x1b[0m\x1b[0m = Simulation")
+    print("\x1b[1m\x1b[31m2\x1b[0m\x1b[0m = Single player")
+    print("\x1b[1m\x1b[31m3\x1b[0m\x1b[0m = Multiplayer")
+    print("\x1b[1m\x1b[31m4\x1b[0m\x1b[0m = Testing hypotheses and changing parameters")
     #if the number of csv rows is sufficient print Statistics normally and give the user a chose of 1-5
     if csv_row_num:
-        print("\x1b[1m\x1b[31m5\x1b[30m\x1b[0m = Statistics")
+        print("\x1b[1m\x1b[31m5\x1b[0m\x1b[0m = Statistics")
         game_type = user_clean_data("", 5, 1)
     #if the number of csv rows is insufficient print Statistics grayed out and a warning and give the user a chose of 1-4
     else:
@@ -965,14 +965,14 @@ def selection(csv_row_num,first_run):
 def percentage_calculator(input_list):
     #initialise counts
     counts = [0,0,0]
-    #gets the length of the of the input list
+    #gets the length of the input list
     total = len(input_list)
-    #iterates through the inputlist and -1 from the number to get the index in count then add 1 to that index position
+    #iterates through the input_list and -1 from the number to get the index in count then add 1 to that index position
     for n in input_list:
         counts[n - 1] += 1
     #initialise percentages
     percentages = []
-    #if the number of number in input_list is greater that 0 reinitialise percentages
+    #if the number in input_list is greater that 0 reinitialize percentages
     if total > 0:
         percentages = []
         # in the loop get the percentage for each place in the counts list then append this to the percentages and return this
@@ -1024,7 +1024,7 @@ def after_game_stats_compiling(values_back,during_game_stats):
     #get the percentage attack defense and neutral from the percentage_calculator for yellow and red
     percentage_atk_def_n_y = percentage_calculator(atk_def_neutral_list_y)
     percentage_atk_def_n_r = percentage_calculator(atk_def_neutral_list_r)
-    #gets the number  of turns and appendis it to a list
+    #gets the number  of turns and appends it to a list
     turn = during_game_stats[8]
     turn_list.append(turn)
     #appends percentage attack defense and neutral for yellow and red to there respective lists
@@ -1050,7 +1050,7 @@ def prep_data_for_csv(game_stats_lists,num_games,game_type):
     turn_list = game_stats_lists[7]
     #for each game on these list it does the following process
     for game in range (num_games):
-        #initialises row to []
+        #initialise row to []
         row = []
         #outcome is given the value of the game_outcome_list for the game the loop is on
         outcome = game_outcome_list[game]
@@ -1068,7 +1068,7 @@ def prep_data_for_csv(game_stats_lists,num_games,game_type):
         row.append(all_mean_r_row[game])
         pct_atk_def_n_separated_y = pct_atk_def_n_list_y[game]
         pct_atk_def_n_separated_r = pct_atk_def_n_list_r[game]
-        #seperates out attack defense and neutral and adds a % sign to it this is done for yellow and red
+        #separates out attack defense and neutral and adds a % sign to it this is done for yellow and red
         for move_type in range (3):
             row.append(str(pct_atk_def_n_separated_y[move_type])+"%")
         for move_type in range (3):
@@ -1085,7 +1085,7 @@ def prep_data_for_csv(game_stats_lists,num_games,game_type):
             row.append("Hyp")
         else:
             row.append("Base")
-        #calls a functio to append the data
+        #calls a function to append the data
         csv_appending(row)
     #empties the lists to avoid duplicates
     emptying_lists_after_stored()
@@ -1148,7 +1148,7 @@ def emptying_lists_after_stored():
     turn_list.clear()
 
 
-#empties lists before stats can be performed to advoid cross contamination of data
+#empties lists before stats can be performed to avoid cross contamination of data
 def csv_list_clear():
     win_lose_draw.clear()
     y_cols.clear()
@@ -1308,7 +1308,7 @@ def count_csv(win_count,lose_count,draw_count,row):
     return (win_count,lose_count,draw_count)
 
 
-#gets the mean median mode of valuse that come in and returns the values
+#gets the mean median mode of values that come in and returns the values
 def mean_median_mode(input_list):
     mean_value = statistics.mean(input_list)
     median_value = statistics.median(input_list)
@@ -1338,7 +1338,7 @@ def stats(hypotheses_base , hypotheses , num_hyp_tests):
                     win_count = counts_out[0]
                     lose_count = counts_out[1]
                     draw_count = counts_out[2]
-            #puts last 3 varables in a list
+            #puts last 3 variables in a list
             win_draw_lose = [win_count , lose_count , draw_count]
             #gets the mean for attack, neutral and defense for yellow and red and puts them in lists
             atk_n_def_y = [(mean_median_mode(attack_y)[0]) , (mean_median_mode(neutral_y)[0]) , (mean_median_mode(defense_y)[0])]
@@ -1355,10 +1355,10 @@ def stats(hypotheses_base , hypotheses , num_hyp_tests):
             #graph menu and user choice
             print()
             print("Pick one of the following using the numbers adjacent:")
-            print("\x1b[32m1\x1b[30m = Red and yellow average columns and rows")
-            print("\x1b[32m2\x1b[30m = Red and yellow wins and draws")
-            print("\x1b[32m3\x1b[30m = Yellow attack, defense and neutral moves")
-            print("\x1b[32m4\x1b[30m = Red attack, defense and neutral moves")
+            print("\x1b[32m1\x1b[0m = Red and yellow average columns and rows")
+            print("\x1b[32m2\x1b[0m = Red and yellow wins and draws")
+            print("\x1b[32m3\x1b[0m = Yellow attack, defense and neutral moves")
+            print("\x1b[32m4\x1b[0m = Red attack, defense and neutral moves")
             stats_type = user_clean_data("", 4, 1)
             #if the user picked 1 calls the graph function with the following arguments
             if stats_type == 0:
@@ -1385,7 +1385,7 @@ def stats(hypotheses_base , hypotheses , num_hyp_tests):
                         lose_count = counts_out[1]
                         draw_count = counts_out[2]
                         rows_read += 1
-                #puts last 3 varables in a list
+                #puts last 3 variables in a list
                 win_draw_lose = [win_count , lose_count , draw_count]
                  #adds up the list
                 win_draw_lose_total = sum(win_draw_lose)
@@ -1407,25 +1407,25 @@ def stats(hypotheses_base , hypotheses , num_hyp_tests):
 
 #to estimate time taken necessary for the simulations
 def time_estimate(games_played):
-    #when games palyed is 10 get the timestamp then gets time for ten games by taking end time from start time
+    #when games played is 10 get the timestamp then gets time for ten games by taking end time from start time
     if games_played == 10:
         end_time_ten = time.time()
         ten_time = end_time_ten - start_time
-        #gets the multiplyer whic is the number ten games time needs to be multiplied by to the estimate time then this round estimated time and print it
-        multiplyer = num_simulation/games_played
-        estimate_time = multiplyer * ten_time
+        #gets the multiplayer which is the number ten games time needs to be multiplied by to the estimate time then this round estimated time and print it
+        multiplayer = num_simulation/games_played
+        estimate_time = multiplayer * ten_time
         estimate_time = round(estimate_time)           
         print("Estimated time = "+ str(estimate_time) +"s")
 
 
-#initializes values for task_isnt_done
-task_isnt_done = True
+#initializes values for task_not_done
+task_not_done = True
 #starts with menu
 game_type = selection(csv_count_rows(False) > 2,True)
 
 
-#while task_isnt_done means the program runs indefinitely
-while(task_isnt_done):
+#while task_not_done means the program runs indefinitely
+while(task_not_done):
     #if the user picked 1
     if game_type == 0:
         #replay is set to true
@@ -1437,7 +1437,7 @@ while(task_isnt_done):
             #num_simulation = 5
             games_played = 0
             start_time = time.time()
-            #while num_simulation is not = to games_played emptying the lists add 1 to games_played make a board and make a fliped board then set the 3 variables
+            #while num_simulation is not = to games_played emptying the lists add 1 to games_played make a board and make a flipped board then set the 3 variables
             while num_simulation != games_played:
                 emptying_lists()
                 games_played+= 1
@@ -1446,15 +1446,15 @@ while(task_isnt_done):
                 turn = 0
                 Game_in_progress = True
                 show = False
-                #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ⚫ and chip to 1 and call the function random_good_moves
+                #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ● and chip to 1 and call the function random_good_moves
                 while Game_in_progress:
                     if turn % 2 == 0:
-                        user = "\x1b[33m\x1b[1m⚫\x1b[30m\x1b[22m"
+                        user = "\x1b[33m\x1b[1m●\x1b[0m\x1b[22m"
                         chip = 1
                         values_back = random_good_moves(user, chip, turn, show, -1 , 35 , True)
-                    #check if turns divided by 2's remainder is 1 if it is sets user to a red ⚫ and chip to 2 and call the function random_good_moves
+                    #check if turns divided by 2's remainder is 1 if it is sets user to a red ● and chip to 2 and call the function random_good_moves
                     else:
-                        user = "\x1b[31m⚫\x1b[30m"
+                        user = "\x1b[31m●\x1b[0m"
                         chip = 2
                         values_back = random_good_moves(user, chip, turn, show, -1 , 35 , True)
                     #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn
@@ -1478,23 +1478,23 @@ while(task_isnt_done):
         replay = True
         #while replay is true
         while replay:
-            #emptying the lists make a board and make a fliped board then set the 2 variables
+            #emptying the lists make a board and make a flipped board then set the 2 variables
             emptying_lists()
             board = make_board()
             board_right_way = flip_board(board)
             blank_front_end_board()
             turn = 0
             Game_in_progress = True
-            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ⚫ and chip to 1 and call the function random_good_moves
+            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ● and chip to 1 and call the function random_good_moves
             while Game_in_progress:
                 if turn % 2 == 0:
-                    user = "\x1b[33m\x1b[1m⚫\x1b[30m\x1b[22m"
+                    user = "\x1b[33m\x1b[1m●\x1b[0m\x1b[22m"
                     chip = 1
                     values_back = human_moves(user, chip, turn)
-                #check if turns divided by 2's remainder is 1 if it is sets user to a red ⚫ and chip to 2 and call the function random_good_moves
+                #check if turns divided by 2's remainder is 1 if it is sets user to a red ● and chip to 2 and call the function random_good_moves
                 else:   
                     show = True
-                    user = "\x1b[31m⚫\x1b[30m"
+                    user = "\x1b[31m●\x1b[0m"
                     chip = 2
                     values_back = random_good_moves(user, chip, turn, show, -1 , 35 , True)
                 #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn                    
@@ -1515,21 +1515,21 @@ while(task_isnt_done):
         replay = True
         #while replay is true
         while replay:
-            #emptying the lists make a board and make a fliped board then set the 2 variables
+            #emptying the lists make a board and make a flipped board then set the 2 variables
             board = make_board()
             board_right_way = flip_board(board)
             blank_front_end_board()
             turn = 0
             Game_in_progress = True
-            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ⚫ and chip to 1 and call the function random_good_moves
+            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ● and chip to 1 and call the function random_good_moves
             while Game_in_progress:
                 if turn % 2 == 0:
-                    user = "\x1b[33m\x1b[1m⚫\x1b[30m\x1b[22m"
+                    user = "\x1b[33m\x1b[1m●\x1b[0m\x1b[22m"
                     chip = 1
                     values_back = human_moves(user, chip, turn)
-                #check if turns divided by 2's remainder is 1 if it is sets user to a red ⚫ and chip to 2 and call the function random_good_moves
+                #check if turns divided by 2's remainder is 1 if it is sets user to a red ● and chip to 2 and call the function random_good_moves
                 else:
-                    user = "\x1b[31m⚫\x1b[30m"
+                    user = "\x1b[31m●\x1b[0m"
                     chip = 2
                     values_back = human_moves(user, chip, turn)
                 #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn
@@ -1552,22 +1552,22 @@ while(task_isnt_done):
         while replay:
             print()
             print("Pick one of the following using the numbers adjacent:")
-            print("\x1b[32m1\x1b[30m = What if column 3 (one to the left of the middle column) is blocked off?")
-            print("\x1b[32m2\x1b[30m = What if the grid size is reduced from 7x6 to 6x6?")
-            print("\x1b[32m3\x1b[30m = What if there is a cap of 30 turns, above this is a draw?")
-            print("\x1b[32m4\x1b[30m = What if the players are less likely to make good moves?")
+            print("\x1b[32m1\x1b[0m = What if column 3 (one to the left of the middle column) is blocked off?")
+            print("\x1b[32m2\x1b[0m = What if the grid size is reduced from 7x6 to 6x6?")
+            print("\x1b[32m3\x1b[0m = What if there is a cap of 30 turns, above this is a draw?")
+            print("\x1b[32m4\x1b[0m = What if the players are less likely to make good moves?")
             modification = user_clean_data("", 4, 1)
-            #runs twice once in base mose then in modified mode
+            #runs twice once in base mode then in modified mode
             for run in range (2):
                 #sets num_simulation to 100, games_played to 0 and gets start time
                 num_simulation = 100
                 games_played = 0
                 start_time = time.time()
-                #if a base run the varables below apply
+                #if a base run the variables below apply
                 if run == 0:
                     max_turn = 35
                     forbidden_column = -1
-                    Defalt_probability = True
+                    Default_probability = True
                 #if run is 2
                 else:
                     #if the user picked 1 set forbidden_column = 2
@@ -1579,10 +1579,10 @@ while(task_isnt_done):
                     #if the user picked 3 set max_turn to 30
                     elif modification == 2:
                         max_turn = 30
-                    #if the user picked 4 change from Defalt_probabilitys by setting Defalt_probability = False
+                    #if the user picked 4 change from Default_probabilities by setting Default_probability = False
                     else:
-                        Defalt_probability = False
-                #while num_simulation is not = to games_played emptying the lists add 1 to games_played make a board and make a fliped board then set the 3 variables
+                        Default_probability = False
+                #while num_simulation is not = to games_played emptying the lists add 1 to games_played make a board and make a flipped board then set the 3 variables
                 while num_simulation != games_played:
                     emptying_lists()
                     games_played+= 1
@@ -1591,17 +1591,17 @@ while(task_isnt_done):
                     turn = 0
                     Game_in_progress = True
                     show = False
-                    #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ⚫ and chip to 1 and call the function random_good_moves
+                    #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to a yellow ● and chip to 1 and call the function random_good_moves
                     while Game_in_progress:
                         if turn % 2 == 0:
-                            user = "\x1b[33m\x1b[1m⚫\x1b[30m\x1b[22m"
+                            user = "\x1b[33m\x1b[1m●\x1b[0m\x1b[22m"
                             chip = 1
-                            values_back = random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Defalt_probability)
-                        #check if turns divided by 2's remainder is 1 if it is sets user to a red ⚫ and chip to 2 and call the function random_good_moves
+                            values_back = random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Default_probability)
+                        #check if turns divided by 2's remainder is 1 if it is sets user to a red ● and chip to 2 and call the function random_good_moves
                         else:
-                            user = "\x1b[31m⚫\x1b[30m"
+                            user = "\x1b[31m●\x1b[0m"
                             chip = 2
-                            values_back = random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Defalt_probability)
+                            values_back = random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Default_probability)
                         #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn
                         during_game_stats = during_game_stats_collection(values_back,turn)
                         Game_in_progress = during_game_stats[7]
