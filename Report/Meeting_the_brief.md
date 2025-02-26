@@ -37,7 +37,7 @@ Estimated time = 3s
 ![Single_player.png](Images/Single_player.png)
 
 ## Advanced Requirement 1
-Each time that the game is played it will store the wins, draws or losses, the mean columns and rows for both yellow and red, the percentage defensive offensive and neutral moves for both players, how may turns the game took to complete and finally the game mode. All this data will be put in the [database](database.csv).
+Each time that the game is played it will store the wins, draws or losses, the mean columns and rows for both yellow and red, the percentage defensive offensive and neutral moves for both players, how may turns the game took to complete and finally the game mode. All this data will be put in the [database](/database.csv).
 
 | win_lose | y_col | y_row | r_col | r_row | y_def  | y_n    | y_atk  | r_def  | r_n    | r_atk  | turn | g_type |
 |----------|-------|-------|-------|-------|--------|--------|--------|--------|--------|--------|------|--------|
@@ -59,7 +59,7 @@ If the user picks the statistics mode, they will be given 4 options:
 3 = Yellow attack, defense and neutral moves
 4 = Red attack, defense and neutral moves
 ```
-Picking any of these options will give the user a bar chart or a pie chart of the data from the [database](database.csv). Depending on the option they pick, the first option red and yellow average columns and rows will have mean, median and mode and the other 3 options will have the mean of the data mentioned.
+Picking any of these options will give the user a bar chart or a pie chart of the data from the [database](/database.csv). Depending on the option they pick, the first option red and yellow average columns and rows will have mean, median and mode and the other 3 options will have the mean of the data mentioned.
 
 ### An example pie chart and bar chart:
 
