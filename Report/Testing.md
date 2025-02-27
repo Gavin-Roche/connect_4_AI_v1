@@ -16,10 +16,10 @@ The user clean data function is to validate all inputs other than the inputs int
 
 The entries into the user clean data and replay function where: 
 
-| No  | Description                                                   | Test data | Expected result                         | Actual result                           | Passed the test |
-|---- |--------------------------------------------------------------|-----------|----------------------------------------|----------------------------------------|---------------|
-| 1   | Testing inputting a number for play again                    | 1         | Message saying: Input Invalid         | Message saying: Input Invalid         | Yes           |
-| 2   | Testing inputting a yes for play again                       | y         | Plays the game again                  | Plays the game again                  | Yes           |
-| 3   | Testing a floating-point number for a menu selection         | 2.5       | Message saying: Input Invalid         | Message saying: Input Invalid         | Yes           |
-| 4   | Testing an out-of-range integer for a menu selection expecting a number between 1-5 | 6 | Message saying: Input Invalid         | Message saying: Input Invalid         | Yes           |
-| 5   | Testing a valid integer for a menu selection expecting a number between 1-5       | 5 | Option 5 is picked                   | Option 5 is picked                   | Yes           |
+| No  | Description                                                                         | Test data | Expected result                | Actual result                            | Passed the test |
+|---- |-------------------------------------------------------------------------------------|-----------|--------------------------------|----------------------------------|------|
+| 1   | Testing inputting a number for play again                                           | 1         | Message saying: Input Invalid  | Message saying: Input Invalid | Yes |
+| 2   | Testing inputting a yes for play again                                              | y         | Plays the game again           | Plays the game again             | Yes |
+| 3   | Testing a floating-point number for a menu selection                                | 2.5       | Message saying: Input Invalid  | Message saying: Input Invalid | Yes |
+| 4   | Testing an out-of-range integer for a menu selection expecting a number between 1-5 | 6         | Message saying: Input Invalid  | Message saying: Input Invalid | Yes |
+| 5   | Testing a valid integer for a menu selection expecting a number between 1-5         | 5         | Option 5 is picked             | Option 5 is picked               | Yes |
