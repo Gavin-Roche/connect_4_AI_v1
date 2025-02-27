@@ -1,4 +1,4 @@
-[Meeting the Brief](Meeting_the_brief.md) |
+[Meeting the Brief](README.md) |
 [Investigation and Plan](Investigation_&_plan.md) |
 [Design](Design.md) |
 [Implementation](Implementation.md) |
