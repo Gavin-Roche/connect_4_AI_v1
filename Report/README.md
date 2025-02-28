@@ -11,7 +11,7 @@
 ## Basic Requirement 1
 The player will be able to play the game to completion by picking columns for chips, if they pick the single player or multiplayer modes. The computer in the single player mode will play differently each time with approximately 25% of computer moves in single player being completely random.
 
-![Finished_game.png](Images/Finished_game.png)
+![Finished Game](Images/Finished_game.png)
 
 ## Basic Requirement 2
 The player will be able to choose a menu item (the first input) and will be asked for a number of simulations to run in the simulation mode. Then they will be asked their move in the single player, multiplayer modes and asked the graph type in the testing hypotheses and statistics modes (second input). Finally, the user will be asked if they what to replay the game the (third input). All the number inputs will be validated in a function I will call user_clean_data. This will check that they are integers between the values expected. Letter inputs (only used on the play_again function) will be validated by making the input lowercase and checking if it is “n” or “y” and this is then used to decide if a replay should take place.
@@ -30,11 +30,11 @@ Estimated time = 3s
 
 ### Multiplayer ###
 
-![Multiplayer.png](Images/Multiplayer.png)
+![Multiplayer](Images/Multiplayer.png)
 
 ### Single player
 
-![Single_player.png](Images/Single_player.png)
+![Single Player](Images/Single_player.png)
 
 ## Advanced Requirement 1
 Each time that the game is played it will store the wins, draws or losses, the mean columns and rows for both yellow and red, the percentage defensive offensive and neutral moves for both players, how may turns the game took to complete and finally the game mode. All this data will be put in the [database](/database.csv).
@@ -63,7 +63,7 @@ Picking any of these options will give the user a bar chart or a pie chart of th
 
 ### An example pie chart and bar chart:
 
-![Pie_&_bar_chart.png](Images/Pie_&_bar_chart.png)
+![Pie and Bar Chart](Images/Pie_&_bar_chart.png)
 
 ## Advanced Requirement 3
 Finally, if the user picks the testing hypotheses and changing parameters option, they will be given 4 options:
