@@ -1,4 +1,4 @@
-Connect 4 AI
+# Connect 4 AI
 
 This is a program based around connect 4 the user can:
 1. Play simulation
