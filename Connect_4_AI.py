@@ -76,6 +76,7 @@ def user_clean_data(user, upper_limit, lower_limit):
             return "Input the number of simulations you require between " + str(lower_limit) + "-" + str(upper_limit) + ": "
 
     while True:
+        try:
             user_input = input(get_prompt())
             #this check that the number is a integer and is between between lower_limit and upper_limit if True it returns the value
             if (user_input.isnumeric() and lower_limit <= int(user_input) <= upper_limit):
@@ -85,6 +86,11 @@ def user_clean_data(user, upper_limit, lower_limit):
             else:
                 #prints: Input Invalid in red
                 print("\x1b[1m\x1b[31mInput Invalid\x1b[0m\x1b[0m")
+        
+        # Exit the program gracefully if interrupted
+        except KeyboardInterrupt:
+            print("\nProgram interrupted. Exiting...")
+            exit()
 
 # checks to see if the top row of the inputted column is full then return False if it is filled or True if it is not
 def column_unfilled(board, column):
