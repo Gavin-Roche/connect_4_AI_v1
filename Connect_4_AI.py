@@ -10,7 +10,7 @@ import csv
 import os
 
 #imports that may need to be installed
-import prettytable
+from prettytable import PrettyTable, HRuleStyle, VRuleStyle
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -567,7 +567,7 @@ def win(board, chip):
 #prints out a front_end board
 def front_end():
     # Create a new table
-    table = prettytable.PrettyTable()
+    table = PrettyTable()
     
     #picks out the 0 1 2 from the board_right_way (backend) and puts the correct characters on the front_board
     for y in range(7):
@@ -591,8 +591,8 @@ def front_end():
 
     # Set the border characters of the table
     table.border = True
-    table.hrules = prettytable.ALL
-    table.vrules = prettytable.ALL
+    table.hrules = HRuleStyle.ALL
+    table.vrules = VRuleStyle.ALL
 
     # Prints the table and the number underneath
     print(table.get_string(header=False))
@@ -891,7 +891,7 @@ def check_win_draw(show):
 #the first board that is printed in single player and multiplayer
 def blank_front_end_board():
     # Create a new table
-    table = prettytable.PrettyTable()
+    table = PrettyTable()
     # fill the grid with black spaces
     for y in range(7):
             for x in range(6):
@@ -906,8 +906,8 @@ def blank_front_end_board():
 
     # Set the border characters of the table
     table.border = True
-    table.hrules = prettytable.ALL
-    table.vrules = prettytable.ALL
+    table.hrules = HRuleStyle.ALL
+    table.vrules = VRuleStyle.ALL
 
     # Print the table
     print(table.get_string(header=False))
