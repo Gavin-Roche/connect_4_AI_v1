@@ -1443,15 +1443,15 @@ while(task_not_done):
                 turn = 0
                 Game_in_progress = True
                 show = False
-                #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to 🟡 and chip to 1 and call the function random_good_moves
+                #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to \x1b[33m●\x1b[0m and chip to 1 and call the function random_good_moves
                 while Game_in_progress:
                     if turn % 2 == 0:
-                        user = "🟡"
+                        user = "\x1b[33m●\x1b[0m"
                         chip = 1
                         values_back = random_good_moves(user, chip, turn, show, -1 , 35 , True)
-                    #check if turns divided by 2's remainder is 1 if it is sets user to 🔴 and chip to 2 and call the function random_good_moves
+                    #check if turns divided by 2's remainder is 1 if it is sets user to \x1b[31m●\x1b[0m and chip to 2 and call the function random_good_moves
                     else:
-                        user = "🔴"
+                        user = "\x1b[31m●\x1b[0m"
                         chip = 2
                         values_back = random_good_moves(user, chip, turn, show, -1 , 35 , True)
                     #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn
@@ -1482,16 +1482,16 @@ while(task_not_done):
             blank_front_end_board()
             turn = 0
             Game_in_progress = True
-            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to 🟡 and chip to 1 and call the function random_good_moves
+            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to \x1b[33m●\x1b[0m and chip to 1 and call the function random_good_moves
             while Game_in_progress:
                 if turn % 2 == 0:
-                    user = "🟡"
+                    user = "\x1b[33m●\x1b[0m"
                     chip = 1
                     values_back = human_moves(user, chip, turn)
-                #check if turns divided by 2's remainder is 1 if it is sets user to 🔴 and chip to 2 and call the function random_good_moves
+                #check if turns divided by 2's remainder is 1 if it is sets user to \x1b[31m●\x1b[0m and chip to 2 and call the function random_good_moves
                 else:   
                     show = True
-                    user = "🔴"
+                    user = "\x1b[31m●\x1b[0m"
                     chip = 2
                     values_back = random_good_moves(user, chip, turn, show, -1 , 35 , True)
                 #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn                    
@@ -1518,15 +1518,15 @@ while(task_not_done):
             blank_front_end_board()
             turn = 0
             Game_in_progress = True
-            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user 🟡 and chip to 1 and call the function random_good_moves
+            #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user \x1b[33m●\x1b[0m and chip to 1 and call the function random_good_moves
             while Game_in_progress:
                 if turn % 2 == 0:
-                    user = "🟡"
+                    user = "\x1b[33m●\x1b[0m"
                     chip = 1
                     values_back = human_moves(user, chip, turn)
-                #check if turns divided by 2's remainder is 1 if it is sets user to 🔴 and chip to 2 and call the function random_good_moves
+                #check if turns divided by 2's remainder is 1 if it is sets user to \x1b[31m●\x1b[0m and chip to 2 and call the function random_good_moves
                 else:
-                    user = "🔴"
+                    user = "\x1b[31m●\x1b[0m"
                     chip = 2
                     values_back = human_moves(user, chip, turn)
                 #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn
@@ -1588,15 +1588,15 @@ while(task_not_done):
                     turn = 0
                     Game_in_progress = True
                     show = False
-                    #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to 🟡 and chip to 1 and call the function random_good_moves
+                    #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to \x1b[33m●\x1b[0m and chip to 1 and call the function random_good_moves
                     while Game_in_progress:
                         if turn % 2 == 0:
-                            user = "🟡"
+                            user = "\x1b[33m●\x1b[0m"
                             chip = 1
                             values_back = random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Default_probability)
-                        #check if turns divided by 2's remainder is 1 if it is sets user to 🔴 and chip to 2 and call the function random_good_moves
+                        #check if turns divided by 2's remainder is 1 if it is sets user to \x1b[31m●\x1b[0m and chip to 2 and call the function random_good_moves
                         else:
-                            user = "🔴"
+                            user = "\x1b[31m●\x1b[0m"
                             chip = 2
                             values_back = random_good_moves(user, chip, turn, show , forbidden_column , max_turn , Default_probability)
                         #call the function during_game_stats_collection to collect data set the values of Game_in_progress and turn
