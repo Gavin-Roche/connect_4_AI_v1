@@ -63,33 +63,28 @@ percentage_win_draw_lose_base_hyp = []
 
 #takes in user inputs and validates they are acceptable inputs if not it will ask for the input again
 def user_clean_data(user, upper_limit, lower_limit):
-    #this is for the game itself picking the row
-    if upper_limit == 7:
-        user_input = input(user + " Player input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
-    #this is for the menus options picking the menu there is 4 or 5 option in all the menus this can cater to both
-    elif upper_limit == 4 or upper_limit == 5:
-        user_input = input("Input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
-    #this is use to pick the number of simulations the user wants in simulation mode
-    else:
-        user_input = input("Input the number of simulations you require between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
-    #this check that the number is not a integer and is between not between lower_limit and upper_limit if that is True it goes into the loop and keep going until the user inputs a valid input
-    while not (user_input.isnumeric() and lower_limit <= int(user_input) <= upper_limit):
-        #prints: Input Invalid in red
-        print("\x1b[1m\x1b[31mInput Invalid\x1b[0m\x1b[0m")
+    # for getting the prompt to output to the user
+    def get_prompt():
         #this is for the game itself picking the row
         if upper_limit == 7:
-            user_input = input(user + " Player input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
+            return user + " Player input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": "
         #this is for the menus options picking the menu there is 4 or 5 option in all the menus this can cater to both
         elif upper_limit == 4 or upper_limit == 5:
-            user_input = input("Input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
+            return "Input a number between " + str(lower_limit) + "-" + str(upper_limit) + ": "
         #this is use to pick the number of simulations the user wants in simulation mode
         else:
-            user_input = input("Input the number of simulations you require between " + str(lower_limit) + "-" + str(upper_limit) + ": ")
-    #turn the user_input into an integer and subtracts 1 as all background tasks start at 0 rather than 1
-    user_input = int(user_input) - 1
-    #returns user_input
-    return user_input
+            return "Input the number of simulations you require between " + str(lower_limit) + "-" + str(upper_limit) + ": "
 
+    while True:
+            user_input = input(get_prompt())
+            #this check that the number is a integer and is between between lower_limit and upper_limit if True it returns the value
+            if (user_input.isnumeric() and lower_limit <= int(user_input) <= upper_limit):
+                #turn the user_input into an integer and subtracts 1 as all background tasks start at 0 rather than 1
+                user_input = int(user_input) - 1
+                return user_input
+            else:
+                #prints: Input Invalid in red
+                print("\x1b[1m\x1b[31mInput Invalid\x1b[0m\x1b[0m")
 
 # checks to see if the top row of the inputted column is full then return False if it is filled or True if it is not
 def column_unfilled(board, column):
