@@ -10,7 +10,6 @@ import csv
 import os
 
 #imports that may need to be installed
-from prettytable import PrettyTable, HRuleStyle, VRuleStyle
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -568,35 +567,30 @@ def win(board, chip):
 #prints out a front_end board
 def front_end():
     # Create a new table
-    table = PrettyTable()
-    
+    num_zero = 0
+
     #picks out the 0 1 2 from the board_right_way (backend) and puts the correct characters on the front_board
     for y in range(7):
         for x in range(6):
             if board_right_way[x][y] == 0:
                 front_board[x][y] = " "
+                num_zero += 1
             elif board_right_way[x][y] == 1:
                 front_board[x][y] = "\x1b[33m●\x1b[0m"
             elif board_right_way[x][y] == 2:
                 front_board[x][y] = "\x1b[31m●\x1b[0m"
 
-    #if all_zero = False
-    win(board_right_way,chip)        
+    if num_zero != 42:
+        win(board_right_way,chip)  
               
-    # Add the rows of the board_right_way to the table
+    # Print the board manually
+    horizontal_line = "+---" * 7 + "+"
+    print(horizontal_line)
     for row in front_board:
-        table.add_row(row)
+        # This prints a row with '|' separators between cells
+        print("| " + " | ".join(row) + " |")
+        print(horizontal_line)
 
-    # Set the alignment of the elements to center
-    table.align = "c"
-
-    # Set the border characters of the table
-    table.border = True
-    table.hrules = HRuleStyle.ALL
-    table.vrules = VRuleStyle.ALL
-
-    # Prints the table and the number underneath
-    print(table.get_string(header=False))
     print("  1   2   3   4   5   6   7")
 
 
@@ -888,31 +882,6 @@ def check_win_draw(show):
     else:
         win_draw_status = True, game_end
         return win_draw_status
-
-#the first board that is printed in single player and multiplayer
-def blank_front_end_board():
-    # Create a new table
-    table = PrettyTable()
-    # fill the grid with black spaces
-    for y in range(7):
-            for x in range(6):
-                front_board[x][y] = " "
-
-    # Add the rows of the board_right_way to the table
-    for row in front_board:
-            table.add_row(row)
-    
-    # Set the alignment of the elements to center
-    table.align = "c"
-
-    # Set the border characters of the table
-    table.border = True
-    table.hrules = HRuleStyle.ALL
-    table.vrules = VRuleStyle.ALL
-
-    # Print the table
-    print(table.get_string(header=False))
-    print("  1   2   3   4   5   6   7")
 
 
 #the play again menu that is use multiple times
@@ -1480,7 +1449,7 @@ while(task_not_done):
             emptying_lists()
             board = make_board()
             board_right_way = flip_board(board)
-            blank_front_end_board()
+            front_end()
             turn = 0
             Game_in_progress = True
             #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user to \x1b[33m●\x1b[0m and chip to 1 and call the function random_good_moves
@@ -1516,7 +1485,7 @@ while(task_not_done):
             #emptying the lists make a board and make a flipped board then set the 2 variables
             board = make_board()
             board_right_way = flip_board(board)
-            blank_front_end_board()
+            front_end()
             turn = 0
             Game_in_progress = True
             #while the game is in progress check if turns divided by 2's remainder is 0 if it is sets user \x1b[33m●\x1b[0m and chip to 1 and call the function random_good_moves
